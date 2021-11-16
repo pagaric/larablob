@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){
 return view('welcome');
 })->name('accueil');
+
 Route::get('/blob', [BlobController::class, 'accueil'])->name('accueil.blob');
 Route::post('/blob', [BlobController::class, 'storeBlob'])->name('store.blob');
+
 Route::get('/affiche', [BlobController::class, 'affiche'])->name('affiche.img');

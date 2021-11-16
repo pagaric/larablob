@@ -15,7 +15,12 @@ class BlobController extends Controller
     public function storeBlob(Request $req)
     {
         $nom = $_FILES['fic']['name'];
-        $blobBrut = file_get_contents($_FILES['fic']['tmp_name']);
+
+        // version sans le addslashes()
+        // $blobBrut = file_get_contents($_FILES['fic']['tmp_name']);
+
+        // version avec le addslashes()
+        $blobBrut = addslashes(file_get_contents($_FILES['fic']['tmp_name']));
 
         $blob = new Blob();
         $blob->insertBlob($nom, $blobBrut);
